@@ -9,7 +9,7 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
-mongoose.connect(process.env.MONGO_DB), {dbName:'btcheck'};
+mongoose.connect(process.env.MONGO_DB, {dbName:'btcheck'});
 var db = mongoose.connection;
 db.once('open', function(){
   console.log('DB connected');
@@ -21,6 +21,7 @@ db.on('error', function(err){
 // Other settings
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname+'/public'));
+//public 밑으로(기준)
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
